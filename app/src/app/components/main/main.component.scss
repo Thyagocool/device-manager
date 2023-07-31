@@ -1,0 +1,22 @@
+.main-menu {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  align-items: center!important;
+  height: 95vh;
+}
+
+.main-menu .item-card {
+  width: 300px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.main-menu .item-card:hover {
+  cursor: pointer;
+  background: #ffffff;
+  color: #495057;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.16), 0 1.5px 4px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+
+}
