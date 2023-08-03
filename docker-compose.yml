@@ -1,0 +1,21 @@
+version: '0.1'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+
+  web-cli:
+    image: thyagooliveira/web-api:0.1
+    ports: 
+      - "3000:3000"
+    #networks:
+      #- backend
+    #command: sh
+
+#networks:
+  #backend:
+    #driver: bridge

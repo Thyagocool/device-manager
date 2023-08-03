@@ -1,0 +1,88 @@
+<form [formGroup]="categoryForm" (submit)="saveCategory()" class="teste">
+  <div class="flex flex-col items-center">
+
+    <!-- fullname input -->
+    <div class="w-3/4 mb-6 mt-5">
+      <span class="p-float-label">
+        <input
+          pInputText
+          type="text"
+          formControlName="fullName"
+          class="form-control w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+          name="fullName"
+          [(ngModel)]="category.fullName"
+        />
+        <label htmlFor="fullName">Nome Completo</label>
+      </span>
+      <div class="ui-grid-col-4">
+        <div
+          [hidden]="
+            categoryForm.controls['fullName'].valid ||
+            !categoryForm.controls['fullName'].dirty
+          "
+          class="alert alert-danger"
+        >
+          Nome is required
+        </div>
+      </div>
+    </div>
+
+    <!-- email input -->
+    <div class="w-3/4 mb-6 mt-5">
+      <span class="p-float-label">
+        <input
+          pInputText
+          type="text"
+          formControlName="email"
+          class="form-control w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+          name="email"
+          [(ngModel)]="category.email"
+        />
+
+        <label htmlFor="email">E-mail</label>
+      </span>
+      <div class="ui-grid-col-4">
+        <div
+          [hidden]="
+            categoryForm.controls['email'].valid ||
+            !categoryForm.controls['email'].dirty
+          "
+          class="alert alert-danger"
+        >
+          E-mail is required
+        </div>
+      </div>
+    </div>
+    <!-- password input -->
+    <div class="w-3/4 mb-6">
+      <span class="p-float-label">
+        <input
+          pInputText
+          type="password"
+          formControlName="password"
+          class="form-control w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+          [(ngModel)]="category.password"
+          name="password"
+        />
+        <label htmlFor="password">Password</label>
+      </span>
+
+      <div class="ui-grid-col-4">
+        <div *ngIf="categoryForm.get('password')?.errors?.['required']"
+          [hidden]="
+            categoryForm.controls['password'].valid ||
+            !categoryForm.controls['password'].dirty
+          "
+          class="alert alert-danger"
+        >
+          Password is required
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row gap-2">
+      <p-button class="flex-auto p-2 edit" (click)="saveCategory()">Salvar</p-button>
+      <p-button class="flex-auto p-2 trash" (click)="hideShowDialog()">Cancelar</p-button>
+    </div>
+
+  </div>
+</form>

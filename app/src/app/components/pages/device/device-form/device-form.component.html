@@ -1,0 +1,82 @@
+<form [formGroup]="deviceForm" (submit)="saveDevice()" class="teste">
+  <div class="flex flex-col items-center">
+    <!-- Title input -->
+    <div class="w-80 mb-6 mt-5">
+      <span class="p-float-label">
+        <input
+          pInputText
+          type="text"
+          formControlName="title"
+          class="form-control w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+          name="title"
+          [(ngModel)]="device.title"
+        />
+        <label htmlFor="title">Título</label>
+      </span>
+      <div class="ui-grid-col-4">
+        <div
+          [hidden]="
+            deviceForm.controls['title'].valid ||
+            !deviceForm.controls['title'].dirty
+          "
+          class="alert alert-danger"
+        >
+          Title is required
+        </div>
+      </div>
+    </div>
+
+    <!-- device input -->
+    <div class="w-80 mb-6 mt-5">
+      <span class="p-float-label">
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="device"
+          name="device"
+          [(ngModel)]="device.device"
+          class="form-control w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+        ></textarea>
+        <label htmlFor="device">device</label>
+      </span>
+      <div class="ui-grid-col-4">
+        <div
+          [hidden]="
+            deviceForm.controls['device'].valid || !deviceForm.controls['device'].dirty
+          "
+          class="alert alert-danger"
+        >
+          device is required
+        </div>
+      </div>
+    </div>
+    <!-- author input -->
+    <div class="w-80 mb-6">
+      <span class="p-float-label">
+        <p-dropdown [options]="categories" name="id_author" formControlName="id_author" [(ngModel)]="device.id_author" optionValue="id" optionLabel="fullName"></p-dropdown>
+      </span>
+
+      <div class="ui-grid-col-4">
+        <div
+          *ngIf="deviceForm.get('id_author')?.errors?.['required']"
+          [hidden]="
+            deviceForm.controls['id_author'].valid ||
+            !deviceForm.controls['id_author'].dirty
+          "
+          class="alert alert-danger"
+        >
+          Author is required
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row gap-2">
+      <p-button class="flex-auto p-2 edit" (click)="saveDevice()"
+        >Salvar</p-button
+      >
+      <p-button class="flex-auto p-2 trash" (click)="hideShowDialog()"
+        >Cancelar</p-button
+      >
+    </div>
+  </div>
+</form>

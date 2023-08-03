@@ -1,0 +1,19 @@
+<app-device-table
+  [device]="devices"
+  (showFormEdit)="openDialogEdit($event)"
+  (showFormNew)="openDialogNew()"
+  (removeDevice)="deleteDevice($event)"
+></app-device-table>
+
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+>
+  <ng-template pTemplate="header">
+    {{ titlePage }}
+  </ng-template>
+
+  <app-device-form (onHideDialog)="openDialogNew()" [device]="device" [operatorType]="operatorType" class="form-pattern"></app-device-form>
+
+</p-dialog>

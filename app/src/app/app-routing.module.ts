@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './components/category/category.component';
-import { MainComponent } from './components/main/main.component';
+import { ComponentsModule } from './components/components.module';
+import { LoginComponent } from './components/pages/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'main', pathMatch: 'full'},
-  {path: 'main', component: MainComponent},
-  {path: 'category', component: CategoryComponent}
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'page',
+    loadChildren: () => import('./components/components.module').then(m => ComponentsModule)
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,19 @@
+<app-category-table
+  [category]="categories"
+  (showFormEdit)="openDialogEdit($event)"
+  (showFormNew)="openDialogNew()"
+  (removecategory)="deleteCategory($event)"
+></app-category-table>
+
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+>
+  <ng-template pTemplate="header">
+    {{ titlePage }}
+  </ng-template>
+
+  <app-category-form (onHideDialog)="openDialogNew()" [category]="category" [operatorType]="operatorType" class="form-pattern"></app-category-form>
+
+</p-dialog>
